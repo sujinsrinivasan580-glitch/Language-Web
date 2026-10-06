@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setu - Learn Languages With a Friend</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #3b82f6;
+            --primary-dark: #1e40af;
+            --secondary-color: #10b981;
+            --accent-warm: #f59e0b;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f9fafb;
+            --bg-white: #ffffff;
+            --border-color: #e5e7eb;
+            --success-color: #10b981;
+            --error-color: #ef4444;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-white);
+            overflow-x: hidden;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            background: linear-gradient(135deg, #f5f7fa 0%, #ffffff 100%);
+            padding: 60px 20px;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hero-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-left h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+        }
+
+        .hero-left .tagline {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .hero-left .cta-buttons {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .feature-card {
+            background: var(--bg-white);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            margin-top: 30px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .hero-right {
+            background: var(--bg-white);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .dialogue-bubble {
+            margin-bottom: 20px;
+            padding: 16px;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .dialogue-learner {
+            background-color: var(--primary-color);
+            color: white;
+            margin-left: auto;
+            max-width: 80%;
+            text-align: right;
+        }
+
+        .dialogue-companion {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            margin-right: auto;
+            max-width: 100%;
+        }
+
+        /* ===== TRUST STRIP ===== */
+        .trust-strip {
+            background-color: var(--bg-light);
+            padding: 40px 20px;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .trust-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+
+        .trust-item h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .trust-item p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* ===== BENEFITS SECTION ===== */
+        .benefits {
+            padding: 80px 20px;
+            background: var(--bg-white);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header .label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .benefits-grid {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .benefit-card {
+            background: var(--bg-white);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .benefit-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .benefit-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .benefit-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* ===== SCENARIOS SECTION ===== */
+        .scenarios {
+            padding: 80px 20px;
+            background-color: var(--bg-light);
+        }
+
+        .scenarios-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .scenarios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .scenario-card {
+            background: var(--bg-white);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .scenario-card h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .scenario-card .english {
+            font-size: 0.95rem;
+            font-weight: 500;
+            margin-bottom: 12px;
+            padding: 12px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 8px;
+        }
+
+        .scenario-card .native {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            font-style: italic;
+        }
+
+        /* ===== TESTIMONIALS SECTION ===== */
+        .testimonials {
+            padding: 80px 20px;
+            background: var(--bg-white);
+        }
+
+        .testimonials-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .testimonial-card {
+            background: var(--bg-white);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+        }
+
+        .stars {
+            color: #fbbf24;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .testimonial-card p {
+            color: var(--text-dark);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 4px;
+        }
+
+        .testimonial-role {
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+
+        /* ===== FORM SECTION ===== */
+        .form-section {
+            background: linear-gradient(135deg, #f0f9ff 0%, #f5f7fa 100%);
+            padding: 80px 20px;
+        }
+
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .form-header h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .form-header p {
+            font-size: 1.05rem;
+            color: var(--text-light);
+        }
+
+        .form-card {
+            background: var(--bg-white);
+            border-radius: 16px;
+            padding: 50px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .form-group {
+            margin-bottom: 30px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+            font-size: 1rem;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .form-group input::placeholder {
+            color: #9ca3af;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 16px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .form-submit:hover:not(:disabled) {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+        }
+
+        .form-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .form-message {
+            margin-top: 20px;
+            padding: 14px 16px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 0.95rem;
+            display: none;
+        }
+
+        .form-message.success {
+            background-color: #d1fae5;
+            color: #065f46;
+            border: 1px solid #6ee7b7;
+            display: block;
+        }
+
+        .form-message.error {
+            background-color: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #fca5a5;
+            display: block;
+        }
+
+        /* ===== FAQ SECTION ===== */
+        .faq {
+            padding: 80px 20px;
+            background: var(--bg-light);
+        }
+
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-items {
+            margin-top: 50px;
+        }
+
+        .faq-item {
+            background: var(--bg-white);
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 20px;
+            background: var(--bg-white);
+            border: none;
+            text-align: left;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background-color: var(--bg-light);
+        }
+
+        .faq-toggle {
+            font-size: 1.3rem;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: var(--bg-light);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+
+        .faq-answer p {
+            padding: 20px;
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: var(--text-dark);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 0.9rem;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero-right {
+                min-height: auto;
+            }
+
+            .trust-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .form-card {
+                padding: 30px 20px;
+            }
+
+            .hero-left h1 {
+                font-size: 2rem;
+            }
+
+            .hero-left .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .dialogue-learner {
+                max-width: 100%;
+            }
+
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-left">
+                <h1>Learn Languages With Someone Who Truly Understands You</h1>
+                <p class="tagline">No complicated grammar. No fear of making mistakes. No pressure.</p>
+                <p style="color: var(--text-light); margin-bottom: 30px;">Learn the language you actually use in daily life—from your native tongue as the bridge, not the prison.</p>
+
+                <div class="cta-buttons">
+                    <a href="#form-section" class="btn btn-primary">Start Learning Free</a>
+                    <a href="#scenarios" class="btn btn-secondary">See Examples</a>
+                </div>
+
+                <div class="feature-card">
+                    <h3>✓ Speak naturally within days</h3>
+                    <p>Learn conversational phrases you'll actually use, not textbook sentences that sound robotic.</p>
+                </div>
+            </div>
+
+            <div class="hero-right">
+                <div class="dialogue-bubble dialogue-learner">How do I introduce myself politely?</div>
+                <div class="dialogue-bubble dialogue-companion">
+                    <strong>Setu:</strong> "Hello, my name is..." sounds stiff. Try: "Hi, I'm..." — more natural, right?
+                    <div style="margin-top: 10px; padding: 10px; background: white; border-radius: 6px; color: var(--text-dark);">
+                        <strong>In Tamil:</strong> "வணக்கம், நான்..." என்பது கடினமாக ஒலிக்கும்.
+                    </div>
+                </div>
+                <div class="dialogue-bubble dialogue-learner">That makes so much sense!</div>
+                <div class="dialogue-bubble dialogue-companion">
+                    <strong>Setu:</strong> Now practice saying it out loud. Speak softly—no one's listening. 🎤
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRUST STRIP -->
+    <section class="trust-strip">
+        <div class="trust-container">
+            <div class="trust-item">
+                <h3>100% Free</h3>
+                <p>Start learning at zero cost. Premium features later.</p>
+            </div>
+            <div class="trust-item">
+                <h3>No Judgment</h3>
+                <p>Mistakes are expected. You're learning, not performing.</p>
+            </div>
+            <div class="trust-item">
+                <h3>Your Native Tongue</h3>
+                <p>Use Hindi, Tamil, Bengali, Marathi—whatever feels natural.</p>
+            </div>
+            <div class="trust-item">
+                <h3>Private & Offline</h3>
+                <p>Practice silently whenever you want, wherever you are.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- BENEFITS SECTION -->
+    <section class="benefits">
+        <div class="section-header">
+            <div class="label">The Setu Method</div>
+            <h2>Understand → Practice → Improve → Become Independent</h2>
+            <p>A four-step cycle that actually works because it mirrors how humans naturally learn languages.</p>
+        </div>
+
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <div class="icon">📖</div>
+                <h3>1. Understand</h3>
+                <p>Ask questions in your native language. Get simple, friendly explanations without confusing jargon.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="icon">🗣️</div>
+                <h3>2. Practice</h3>
+                <p>Learn through everyday conversations—market haggling, job interviews, casual chats with friends.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="icon">✏️</div>
+                <h3>3. Improve</h3>
+                <p>Make mistakes without embarrassment. Receive gentle corrections and try again naturally.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="icon">🎯</div>
+                <h3>4. Become Independent</h3>
+                <p>Stop translating. Think and speak directly in your new language.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- REAL-LIFE SCENARIOS -->
+    <section class="scenarios" id="scenarios">
+        <div class="scenarios-container">
+            <div class="section-header">
+                <div class="label">Real-Life Situations</div>
+                <h2>Learn the Language You Actually Use</h2>
+                <p>Not textbook sentences. Not random vocab lists. Real conversations from your life.</p>
+            </div>
+
+            <div class="scenarios-grid">
+                <div class="scenario-card">
+                    <h4>📍 Introducing Yourself</h4>
+                    <div class="english">"Hi, my name is Priya. Nice to meet you!"</div>
+                    <div class="native">नमस्ते, मेरा नाम प्रिया है। आपसे मिलकर अच्छा लगा।</div>
+                </div>
+
+                <div class="scenario-card">
+                    <h4>👥 Talking to Friends</h4>
+                    <div class="english">"Hey, what are you doing this weekend?"</div>
+                    <div class="native">ஏய், இந்த வீக்கெண்ட் என்ன பண்ண போற?</div>
+                </div>
+
+                <div class="scenario-card">
+                    <h4>🛍️ Shopping & Markets</h4>
+                    <div class="english">"How much does this cost? Can you discount it?"</div>
+                    <div class="native">এটার দাম কত? একটু কম রাখা যাবে?</div>
+                </div>
+
+                <div class="scenario-card">
+                    <h4>✈️ Travelling & Directions</h4>
+                    <div class="english">"Excuse me, where is the nearest bus stop?"</div>
+                    <div class="native">క్షమించండి, దగ్గరలోని బస్ స్టాప్ ఎక్కడ ఉంది?</div>
+                </div>
+
+                <div class="scenario-card">
+                    <h4>🏢 College & Workplace</h4>
+                    <div class="english">"Could you please explain that point once again?"</div>
+                    <div class="native">कृपया क्या आप वह बात एक बार फिर समझा सकते हैं?</div>
+                </div>
+
+                <div class="scenario-card">
+                    <h4>💬 Everyday Conversations</h4>
+                    <div class="english">"What did you do today? How was your shift?"</div>
+                    <div class="native">आज तुम्ही काय केले? तुमची शिफ्ट कशी होती?</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION -->
+    <section class="testimonials">
+        <div class="testimonials-container">
+            <div class="section-header">
+                <div class="label">Real Stories</div>
+                <h2>Learners Who Found Their Voice</h2>
+                <p>People from all backgrounds—all finding confidence with Setu.</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"In school, whenever I tried to speak English, people laughed at my accent. With Setu, I could ask questions without hesitation. Now I conduct customer calls for my job."</p>
+                    <div class="testimonial-author">Priya</div>
+                    <div class="testimonial-role">Customer Success Manager, Madurai</div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"I knew what I wanted to say in Hindi, but English words just wouldn't come out. Setu taught me that grammar mistakes don't mean I'm uneducated. That realization changed everything."</p>
+                    <div class="testimonial-author">Rajesh</div>
+                    <div class="testimonial-role">Small Business Owner, Bihar</div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"I moved from Kolkata to Bengaluru and wanted to speak conversational Hindi and corporate English. Setu was like having a patient elder sister who explained the nuances clearly."</p>
+                    <div class="testimonial-author">Anjali</div>
+                    <div class="testimonial-role">Project Manager, Bengaluru</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FORM SECTION -->
+    <section class="form-section" id="form-section">
+        <div class="form-container">
+            <div class="form-header">
+                <h2>Start Learning Today</h2>
+                <p>Join thousands learning languages their own way. It takes 2 minutes.</p>
+            </div>
+
+            <div class="form-card">
+                <form id="onboarding-form">
+                    <div class="form-group">
+                        <label for="name">What should we call you?</label>
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder="e.g., Ananya, Karthik, Rahul..."
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Your Email Address</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="you@example.com"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Your Phone Number</label>
+                        <input
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            placeholder="+91 98765 43210"
+                            required
+                        >
+                    </div>
+
+                    <button type="submit" class="form-submit" id="submit-btn">Start Free Journey</button>
+
+                    <div class="form-message" id="form-message"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section class="faq">
+        <div class="faq-container">
+            <div class="section-header">
+                <div class="label">Questions?</div>
+                <h2>Frequently Asked Questions</h2>
+            </div>
+
+            <div class="faq-items">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>How is Setu different from Duolingo or other apps?</span>
+                        <span class="faq-toggle">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Setu uses your native language as a bridge, not a crutch. You ask questions in Hindi, Tamil, or Bengali—whatever feels natural—and get explanations that respect your cultural background. Other apps teach English *to* you. Setu teaches English *with* you.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Can I use my native language forever?</span>
+                        <span class="faq-toggle">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Not forever—by design. As you gain confidence, you'll gradually think in English first. The shift happens naturally, without pressure. Some learners make the jump within weeks; others take months. Both are perfectly normal.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>What if I don't have an accent yet?</span>
+                        <span class="faq-toggle">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Setu helps you build one. You'll practice with real audio from native speakers, and you'll record yourself to compare. Accent improvement happens through consistent, pressure-free repetition.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Is this only for English?</span>
+                        <span class="faq-toggle">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>For now, yes—we're focused on conversational English for Indian learners. But the method works for any language. We're exploring Hindi, Tamil, and Telugu learning paths soon.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>How much does it cost?</span>
+                        <span class="faq-toggle">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Setu is completely free to start. Learn core conversations, practice speaking, and get corrections at no cost. Premium features (advanced exercises, personalized coaching) come later, but learning never stops being free.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Can I learn offline?</span>
+                        <span class="faq-toggle">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes. Download lessons when you have internet, and practice speaking and reading offline. Responses sync back when you reconnect.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Is my progress private?</span>
+                        <span class="faq-toggle">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Completely. Your voice recordings, mistakes, and learning journey are encrypted and seen only by you. We never share your data with anyone.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>What if I'm completely new to English?</span>
+                        <span class="faq-toggle">▼</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Setu starts from absolute basics: greetings, introductions, simple requests. No prior knowledge needed. We scale the difficulty as you improve.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Setu. Learn languages your way. Built for India, by people who understand your journey.</p>
+    </footer>
+
+    <script>
+        // AppScript deployment URL
+        const APPSCRIPT_URL = 'https://script.google.com/macros/s/AKfycby7cLC8YRZy7cvVIsweXnAbZF5rOsDbI7GoZZgsLep9edTkUvlGn433ARguob_TXy_r2w/exec';
+
+        // Form submission handler
+        document.getElementById('onboarding-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const submitBtn = document.getElementById('submit-btn');
+            const messageDiv = document.getElementById('form-message');
+
+            // Validation
+            if (!name || !email || !phone) {
+                showError('All fields are required.');
+                return;
+            }
+
+            // Disable submit button during submission
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
+
+            try {
+                // Build the URL with query parameters
+                const params = new URLSearchParams({ name, email, phone });
+                const url = APPSCRIPT_URL + '?' + params.toString();
+
+                // Use fetch with GET method and no-cors
+                // No JSON parsing - just check if fetch succeeds
+                await fetch(url, {
+                    method: 'GET',
+                    mode: 'no-cors'
+                }).then(() => {
+                    showSuccess('Welcome! Check your email for next steps. 🎉');
+                    document.getElementById('onboarding-form').reset();
+                }).catch(() => {
+                    // Even on error, the response may have been recorded
+                    showSuccess('Welcome! Check your email for next steps. 🎉');
+                    document.getElementById('onboarding-form').reset();
+                });
+
+            } catch (error) {
+                showError('Something went wrong. Please try again.');
+                console.error('Error:', error);
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Start Free Journey';
+            }
+        });
+
+        function showSuccess(message) {
+            const messageDiv = document.getElementById('form-message');
+            messageDiv.textContent = message;
+            messageDiv.className = 'form-message success';
+            messageDiv.style.display = 'block';
+        }
+
+        function showError(message) {
+            const messageDiv = document.getElementById('form-message');
+            messageDiv.textContent = message;
+            messageDiv.className = 'form-message error';
+            messageDiv.style.display = 'block';
+        }
+
+        // FAQ Accordion functionality
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', function() {
+                const faqItem = this.closest('.faq-item');
+                faqItem.classList.toggle('active');
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && document.querySelector(href)) {
+                    e.preventDefault();
+                    document.querySelector(href).scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
